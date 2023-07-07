@@ -8,22 +8,32 @@ def index(request):
 
     # return HttpResponse("Home")
 
-def removepunc(request):
+def analyze(request):
     # get the text
     djtext = request.GET.get('text', 'default')
     print(djtext)
+    removepunc = request.GET.get('removepunc', 'default')
+    print(removepunc)
     # analyze the text
-    return HttpResponse("removepunc")
+    analyzed_text = djtext
+    punctuations = '''.,?!:;()[]}{<>-—_/'"|@#$%^&*+=~'''
+    analyzed = ''
+    for char in djtext:
+        if char not in punctuations:
+            analyzed = analyzed + char
+    # return HttpResponse("removepunc")
+    params = {'purpose':'Removed Punctuations', 'analyzed_text':analyzed}
+    return render(request, 'analyze.html', params)
 
-def capfirst(request):
-    return HttpResponse("capitalize first")
+# def capfirst(request):
+#     return HttpResponse("capitalize first")
 
-def newlineremove(request):
-    return HttpResponse("newline remove first")
+# def newlineremove(request):
+#     return HttpResponse("newline remove first")
 
 
-def spaceremove(request):
-    return HttpResponse("space remover back")
+# def spaceremove(request):
+#     return HttpResponse("space remover back")
 
-def charcount(request):
-    return HttpResponse("charcount ")
+# def charcount(request):
+#     return HttpResponse("charcount ")

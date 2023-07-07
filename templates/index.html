@@ -8,9 +8,11 @@
 <body>
     <h1>Welcome to the text analyzer</h1>
     <h3>Enter your text : </h3>
-    <form action="/removepunc" method="get">
+    <form action="/analyze" method="get">
         <textarea name="text" id="" cols="30" rows="10" style="width: 1506px; height: 160px;"></textarea>
-        <button type="submit">Analyze text</button>
+        <br>
+        <input type="checkbox" name="removepunc">Remove Punctuations
+        <button type="submit">Analyze text</button>  
     </form>
     
 </body>
