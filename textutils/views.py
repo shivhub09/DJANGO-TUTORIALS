@@ -14,16 +14,26 @@ def analyze(request):
     print(djtext)
     removepunc = request.GET.get('removepunc', 'default')
     print(removepunc)
+    allcaps = request.GET.get('fullcaps', 'default')
     # analyze the text
-    analyzed_text = djtext
     punctuations = '''.,?!:;()[]}{<>-—_/'"|@#$%^&*+=~'''
     analyzed = ''
-    for char in djtext:
-        if char not in punctuations:
-            analyzed = analyzed + char
+    if removepunc == 'on':
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose':'Removed Punctuations', 'analyzed_text':analyzed}
+        return render(request, 'analyze.html', params)
+    elif allcaps == 'on':
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char.upper()
+        params = {'purpose':'Capitalized', 'analyzed_text':analyzed}
+        return render(request, 'analyze.html', params)
+    else:
+        return HttpResponse("Error")
     # return HttpResponse("removepunc")
-    params = {'purpose':'Removed Punctuations', 'analyzed_text':analyzed}
-    return render(request, 'analyze.html', params)
+    
 
 # def capfirst(request):
 #     return HttpResponse("capitalize first")
