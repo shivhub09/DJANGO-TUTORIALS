@@ -3,8 +3,20 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("<h1>Hello Harry</h1>")
+    return HttpResponse("Home")
 
 
-def about(request):
-    return HttpResponse("about Harry")
+def removepunc():
+    return HttpResponse("remove punc")
+
+def capfirst():
+    return HttpResponse("capitalize")
+
+def lineremove():
+    return HttpResponse("remove an extra line   ")
+
+def spaceremove():
+    return HttpResponse("remove an space   ")
+
+def charcount():
+    return HttpResponse("count the number of characters   ")
