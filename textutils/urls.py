@@ -19,10 +19,12 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('removepunc', views.index, name='index'),
+    path('', views.index, name='index'),
     path('capitalizefirst', views.capfirst, name='capfirst'),
     path('removeline', views.lineremove, name='lineremove'),
     path('spaceremove', views.spaceremove, name='spaceremove'),
-    path('charcount', views.charcount, name='charcount')
+    path('charcount', views.charcount, name='charcount'),
+    path('removepunc', views.removepunc, name='removepunc'),
+
 
 ]
